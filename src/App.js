@@ -1,17 +1,16 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "./redux/actions";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import UserDetailsTable from "./components/UserDetailsTable";
+import Counter from "./components/Counter";
 
 function App() {
-  const dispatch = useDispatch();
-  const counter = useSelector((state) => state.counter);
-
   return (
     <div className="App">
-      <button onClick={() => dispatch(increment())}>increment</button>
-      <div>{counter}</div>
-      <button onClick={() => dispatch(decrement())}>decrement</button>
+      <Router>
+        <Routes>
+          <Route path="counter" element={<Counter />} />
+          <Route path="/" element={<UserDetailsTable />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
